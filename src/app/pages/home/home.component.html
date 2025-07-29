@@ -1,0 +1,26 @@
+<div class="page-wrapper">
+  <header class="header">
+    <h1 class="title">Bienvenido</h1>
+    <app-editor-text [title]="'Texto editable aquí'" ></app-editor-text>
+
+  </header>
+
+  <main class="body">
+    <div class="botones">
+      <button #botonGuardar (click)="guardar">+</button>
+      <button>-</button>
+    </div>
+    
+
+    <app-notes></app-notes>
+
+    <p>Contenido principal aquí</p>
+    <p>Más contenido, textos, imágenes o secciones</p>
+  </main>
+
+  <footer class="footer">
+    <p>Pie de página — todos los derechos reservados</p>
+  </footer>
+
+ 
+</div>

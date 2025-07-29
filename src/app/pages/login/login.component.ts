@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../services/service-auth/service-auth.service';
 
 @Component({
   selector: 'app-login',
@@ -15,16 +15,19 @@ export class LoginComponent {
   password = '';
   error = '';
 
-  constructor(private auth: Auth, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   login() {
-    signInWithEmailAndPassword(this.auth, this.gmail, this.password)
+    this.authService.login(this.gmail, this.password)
       .then(() => {
         this.router.navigate(['/home']);
       })
-      .catch(err => {
-        this.error = err.message;
+      .catch(error => {
+        console.error('Error al iniciar sesión:', error);
+        this.error = error.message;
       });
-  }
+  } 
+
+
 
 }

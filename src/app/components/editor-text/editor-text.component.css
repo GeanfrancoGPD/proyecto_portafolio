@@ -1,0 +1,21 @@
+/* Texto mostrado cuando no se edita */
+.editor-text {
+  cursor: pointer;
+  padding: 4px;
+  border: none;
+  background: transparent;
+  display: inline-block;
+  color: white; /* o el color que quieras */
+  font-size: 1.2rem;
+}
+
+/* Input cuando estás editando */
+.editor-input {
+  font-size: 1.2rem;
+  font-family: "BondonItaly";
+  padding: 4px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white; /* mismo color que el texto */
+}

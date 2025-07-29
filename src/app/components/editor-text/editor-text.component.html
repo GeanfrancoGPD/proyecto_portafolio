@@ -1,0 +1,13 @@
+<!-- Texto mostrado cuando no estás editando -->
+<div *ngIf="!editing" (click)="startEditing()" class="editor-text">
+  {{ title || 'Haz clic para agregar título' }}
+</div>
+
+<!-- Input mostrado cuando estás editando -->
+<input *ngIf="editing"
+       [(ngModel)]="title"
+       (blur)="stopEditing()"
+       (keydown.enter)="stopEditing()"
+       autofocus
+       class="editor-input"
+/>

@@ -1,0 +1,21 @@
+.notas-container {
+  display: flex;
+  flex-direction: row; /* Apila en horizontal */
+  flex-wrap: wrap;     /* Permite que pasen a la siguiente fila */
+  gap: 1rem;           /* Espacio entre notas */
+  justify-content: center; /* Alinea notas al inicio */
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.nota {
+  width: 30vw;         /* Ancho relativo al viewport */
+  min-width: 200px;    /* Ancho mínimo para que no se encojan demasiado */
+  height: 80vh;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}

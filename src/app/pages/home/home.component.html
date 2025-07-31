@@ -7,8 +7,9 @@
 
   <main class="body">
     <div class="botones">
-      <button #botonGuardar (click)="guardar">+</button>
-      <button>-</button>
+      <button (click)="abrirModal('crear')">+</button>
+      <button (click)="abrirModal('editar')">*</button>
+      <button (click)="abrirModal('eliminar')">-</button>
     </div>
     
 
@@ -21,6 +22,14 @@
   <footer class="footer">
     <p>Pie de página — todos los derechos reservados</p>
   </footer>
+
+  <app-modal
+  *ngIf="mostrarModal"
+  [show]="mostrarModal"
+  [uidUsuario]="uid"
+  [tipo]="tipoModal"
+  (close)="cerrarModal()">
+</app-modal>
 
  
 </div>

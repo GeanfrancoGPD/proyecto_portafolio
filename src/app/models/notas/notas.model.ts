@@ -2,6 +2,6 @@ export interface NotaPro {
   titulo: string;
   descripcion: string;
   imagenUrl?: string;
-  link?: string;
+  links?: { tipo: string; url: string }[];
   fechaCreacion: string;
 }

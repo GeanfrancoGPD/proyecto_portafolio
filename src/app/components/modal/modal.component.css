@@ -1,0 +1,115 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-content {
+  padding: 2rem;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 500px;
+  background: rgb(33, 0, 197);
+
+}
+
+
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: white;
+}
+
+.modal-content form h2{
+  font-family:"BondonItaly";
+  font-size: 8vh;
+}
+
+.modal-content form input{
+  padding: 0.6rem;
+  border: 1px solid black;
+  border-radius: 8px;
+  height: 1vh;
+}
+
+.modal-content form textarea {
+  max-width: 100%;
+  width: 100%;
+  resize: vertical; 
+  box-sizing: border-box;
+  height: 50px;             
+  max-height: 80px; 
+}
+
+.botones{
+  display: flex;
+  justify-content: flex-end;
+}
+
+button{
+  height: 6vh;
+  width: 6vw;
+  margin: 10px 8px;
+  border-radius: 8px;
+  color: white;
+
+  background-color: #0c169e;
+}
+
+button:hover{
+  transition: all 0.3s ease-in-out;
+  background-color: blue;
+}
+
+
+.boton-imagen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  height: 2vh;
+
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #0c169e;
+
+  transition: background-color 0.3s ease;
+}
+
+.boton-imagen:hover {
+  background-color: blue;
+}
+
+
+.general{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.labels{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 8px;
+  gap: 40px;
+}
+
+.contenido{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8vh;
+
+}

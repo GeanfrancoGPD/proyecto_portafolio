@@ -5,10 +5,12 @@ import { CommonModule } from '@angular/common';
 import { NotesComponent } from '../../components/notes/notes.component';
 import { AuthService } from '../../services/service-auth/service-auth.service';
 import { Router } from '@angular/router';
+import { ModalComponent } from '../../components/modal/modal.component';
 
 @Component({
   selector: 'app-home',
-  imports: [ FormsModule, CommonModule, EditorTextComponent, NotesComponent],
+  imports: [ FormsModule, CommonModule, EditorTextComponent, 
+    NotesComponent, ModalComponent],
   standalone: true,
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
@@ -16,20 +18,37 @@ import { Router } from '@angular/router';
 export class HomeComponent {
   @ViewChild('botonGuardar') botonG!: ElementRef<HTMLButtonElement>;
   constructor(private authService: AuthService, private router: Router) {}
+  mostrarModal = false;
+  tipoModal: 'crear' | 'editar' | 'eliminar' = 'crear';
+  uid: string = '';
 
-  // ngOnInit() {
-  //   const user = this.authService.getCurrentUser();
-  //   if( user === null){
-  //     this.router.navigate(['/']);
-  //   }
-  //   console.log('Usuario actual:', user?.email);
-  //   console.log('Datos del usuario', user?.uid);
-  // }
+
+  ngOnInit() {
+    const user = this.authService.getCurrentUser();
+    if( user === null){
+      this.router.navigate(['/']);
+    }else{
+     this.uid = user.uid   
+    }
+    console.log('Usuario actual:', user?.email);
+    console.log('Datos del usuario', user?.uid);
+  }
+
+
+  abrirModal(tipo: 'crear' | 'editar' | 'eliminar') {
+    this.tipoModal = tipo;
+    this.mostrarModal = true;
+  }
+
+  cerrarModal() {
+    this.mostrarModal = false;
+  }
+  
+
 
   
-  guardar() {
-    console.log('Botón clickeado');
-  }
+
+  
 
 
 }

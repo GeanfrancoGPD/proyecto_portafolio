@@ -9,6 +9,6 @@ import { routes } from './app.routes';
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes),
     provideFirebaseApp(() => initializeApp(firebase.firebaseConfig)),
-    provideAuth(() => getAuth())
+    provideAuth(() => getAuth()),
   ]
 };

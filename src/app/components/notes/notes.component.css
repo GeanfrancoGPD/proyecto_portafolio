@@ -19,3 +19,37 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
 }
+
+.nota h3{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 6vh;
+  font-family: "BondonItaly";
+  margin: 8px;
+  --line-clamp: 2;  
+}
+
+.nota p{
+  margin: 12px;
+  max-height: 30%;
+  overflow-y: auto;
+  
+}
+
+img{
+  height: 120px;
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover; /*La imagen se ajusta al contenedor*/
+}
+
+.links{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.links img{
+  margin: 20px;
+  height: 40px;
+}

@@ -1,27 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ServiceNotasService } from '../../services/service-notas/service-notas.service';
+import { NotaPro } from '../../models/notas/notas.model';
+import { LinkIconComponent } from '../link-icon/link-icon.component';
 
 @Component({
   selector: 'app-notes',
-  imports: [CommonModule],
+  imports: [CommonModule, LinkIconComponent],
   standalone: true,
   templateUrl: './notes.component.html',
   styleUrl: './notes.component.css'
 })
-export class NotesComponent {
-  notas = [
-    { titulo: 'Nota 1', contenido: 'Contenido de la nota 1' },
-    { titulo: 'Nota 2', contenido: 'Contenido de la nota 2' },
-    { titulo: 'Nota 3', contenido: 'Contenido de la nota 2' },
-    { titulo: 'Nota 4', contenido: 'Contenido de la nota 2' },
-    { titulo: 'Nota 5', contenido: 'Contenido de la nota 2' },
-    { titulo: 'Nota 6', contenido: 'Contenido de la nota 2' },
-    { titulo: 'Nota 7', contenido: 'Contenido de la nota 2' },
-    { titulo: 'Nota 8', contenido: 'Contenido de la nota 2' },
-    { titulo: 'Nota 9', contenido: 'Contenido de la nota 2' },
-    { titulo: 'Nota 10', contenido: 'Contenido de la nota 2' },
-  
+export class NotesComponent implements OnInit {
+  @Input() uid!: string;
 
-  ];
+  notas: NotaPro[] = [];
 
+  constructor(private notasService: ServiceNotasService) {}
+
+  ngOnInit() {
+    if (this.uid) {
+      this.cargarNotas();
+    }
+  }
+
+  async cargarNotas() {
+    try {
+      this.notas = await this.notasService.obtenerNotas(this.uid);
+      console.log("Notas cargadas:", this.notas);
+    } catch (err) {
+      console.error("Error al obtener notas:", err);
+    }
+  }
 }

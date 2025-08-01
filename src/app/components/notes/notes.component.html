@@ -1,6 +1,18 @@
 <div class="notas-container">
-    <div class="nota" *ngFor="let nota of notas">
+    <div *ngFor="let nota of notas" class="nota">
+    <img *ngIf="nota.imagenUrl" [src]="nota.imagenUrl"/>
+
+
     <h3>{{ nota.titulo }}</h3>
-    <p>{{ nota.contenido }}</p>
+    <p>{{ nota.descripcion }}</p>
+    <p><small>{{ nota.fechaCreacion | date:'short' }}</small></p>
+
+    <div class="links" *ngIf="nota.links?.length">
+        <app-link-icon
+            *ngFor="let link of nota.links"
+            [tipo]="link.tipo"
+            [url]="link.url">
+        </app-link-icon>
     </div>
+
 </div>

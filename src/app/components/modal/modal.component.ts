@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ServiceNotasService } from '../../services/service-notas/service-notas.service';
 import { NotaPro } from '../../models/notas/notas.model';
+import { StorageService } from '../../services/service-storage/storage.service';
 
 
 @Component({
@@ -37,40 +38,46 @@ export class ModalComponent {
   };
 
 
-  constructor(private notasService: ServiceNotasService){}
+  constructor(private notasService: ServiceNotasService, private storageService:StorageService){}
 
   cerrarModal() {
     this.close.emit();
   }
 
 
-  crearNota() {
+  async crearNota() {
     const fecha = new Date();
-    const dia = fecha.getDate().toString().padStart(2, '0');
-    const mes = (fecha.getMonth() + 1).toString().padStart(2, '0');
-    const año = fecha.getFullYear();
-    this.nota.fechaCreacion = `${dia}/${mes}/${año}`;
-
-    console.log("Uid de usuario:", this.uidUsuario);
-    console.log("Datos de nota:", this.nota);
+    this.nota.fechaCreacion = fecha.toISOString(); // Recomendación: formato ISO
+    
     this.nota.links = [];
 
     if (this.linksTemp.github.trim()) {
       this.nota.links.push({ tipo: 'GitHub', url: this.linksTemp.github });
-      console.log(this.nota.links);
-       
-      }
-      if (this.linksTemp.linkedin.trim()) {
-        this.nota.links.push({ tipo: 'LinkedIn', url: this.linksTemp.linkedin });
-      }
-      if (this.linksTemp.otro.trim()) {
-        this.nota.links.push({ tipo: 'Otro', url: this.linksTemp.otro });
+    }
+    if (this.linksTemp.linkedin.trim()) {
+      this.nota.links.push({ tipo: 'LinkedIn', url: this.linksTemp.linkedin });
+    }
+    if (this.linksTemp.otro.trim()) {
+      this.nota.links.push({ tipo: 'Otro', url: this.linksTemp.otro });
+    }
+
+    try {
+      if (this.imagenSeleccionada) {
+        const base64 = await this.storageService.convertirABase64(this.imagenSeleccionada);
+        this.nota.imagenUrl = base64;
+      } else {
+        alert('Debes seleccionar una imagen antes de guardar la nota.');
+        return;
       }
 
-      this.notasService.crearNota(this.uidUsuario, this.nota)
-        .then(() => console.log('Nota creada correctamente'))
-        .catch(err => console.error('Error al crear la nota:', err));
+
+      await this.notasService.crearNota(this.uidUsuario, this.nota);
+      console.log('Nota creada correctamente');
+    } catch (err) {
+      console.error('Error al crear la nota o subir imagen:', err);
     }
+  }
+
 
 
   onFileSelected(event: Event) {

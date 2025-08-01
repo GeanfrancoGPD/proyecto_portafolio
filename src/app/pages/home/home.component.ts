@@ -20,19 +20,19 @@ export class HomeComponent {
   constructor(private authService: AuthService, private router: Router) {}
   mostrarModal = false;
   tipoModal: 'crear' | 'editar' | 'eliminar' = 'crear';
-  uid: string = '';
+  uid: string = 'dy2xi4booiRkL4oyFQQOY5fB72s1';
 
 
-  ngOnInit() {
-    const user = this.authService.getCurrentUser();
-    if( user === null){
-      this.router.navigate(['/']);
-    }else{
-     this.uid = user.uid   
-    }
-    console.log('Usuario actual:', user?.email);
-    console.log('Datos del usuario', user?.uid);
-  }
+  // ngOnInit() {
+  //   const user = this.authService.getCurrentUser();
+  //   if( user === null){
+  //     this.router.navigate(['/']);
+  //   }else{
+  //    this.uid = user.uid   
+  //   }
+  //   console.log('Usuario actual:', user?.email);
+  //   console.log('Datos del usuario', user?.uid);
+  // }
 
 
   abrirModal(tipo: 'crear' | 'editar' | 'eliminar') {

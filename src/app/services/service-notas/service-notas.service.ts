@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ref, push, set } from 'firebase/database';
+import { ref, push, set, get, child } from 'firebase/database';
 import { getDatabase } from '@angular/fire/database';
 import { NotaPro } from '../../models/notas/notas.model';
 
@@ -14,4 +14,24 @@ export class ServiceNotasService {
     const nuevaNotaRef = push(notaRef);
     return set(nuevaNotaRef, nota);
   }
+
+  async obtenerNotas(uid: string): Promise<NotaPro[]> {
+    const notaRef = ref(this.db, `usuarios/${uid}/notasPro`);
+    const snapshot = await get(notaRef);
+
+    if (snapshot.exists()) {
+      const data = snapshot.val();
+
+      return Object.values(data).map((nota: any) => {
+        if (nota.links && typeof nota.links === 'object' && !Array.isArray(nota.links)) {
+          nota.links = Object.values(nota.links);
+        }
+        return nota;
+      }) as NotaPro[];
+    } else {
+      return [];
+    }
+  }
+
+
 }

@@ -4,4 +4,5 @@ export interface NotaPro {
   imagenUrl?: string;
   links?: { tipo: string; url: string }[];
   fechaCreacion: string;
+  categoria: string;
 }

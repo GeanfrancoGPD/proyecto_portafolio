@@ -6,6 +6,7 @@ import { NotesComponent } from '../../components/notes/notes.component';
 import { AuthService } from '../../services/service-auth/service-auth.service';
 import { Router } from '@angular/router';
 import { ModalComponent } from '../../components/modal/modal.component';
+import { LinkIconComponent } from '../../components/link-icon/link-icon.component';
 
 @Component({
   selector: 'app-home',

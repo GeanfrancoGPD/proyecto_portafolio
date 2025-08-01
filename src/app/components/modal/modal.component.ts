@@ -26,11 +26,11 @@ export class ModalComponent {
   nota: NotaPro = {
     titulo: '',
     descripcion: '',
+    categoria: '',
     fechaCreacion: '',
     imagenUrl: '',
     links:[],
   };
-  
   linksTemp = {
     github: '',
     linkedin: '',

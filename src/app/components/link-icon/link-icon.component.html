@@ -1,7 +1,17 @@
-<a [href]="url" target="_blank" rel="noopener noreferrer" class="icon-link">
+<!-- Este bloque se usa cuando `url` está presente -->
+<a *ngIf="url" [href]="url" target="_blank" rel="noopener noreferrer" class="icon-link">
   <ng-container [ngSwitch]="tipo">
     <img *ngSwitchCase="'GitHub'" src="../../../assets/icons/github.svg" alt="GitHub" width="16" height="16" />
     <img *ngSwitchCase="'LinkedIn'" src="../../../assets/icons/linkedin.svg" alt="LinkedIn" width="16" height="16" />
     <img *ngSwitchDefault src="../../../assets/icons/otro.svg" alt="Otro" width="16" height="16" />
   </ng-container>
 </a>
+
+<!-- Este bloque se usa cuando NO hay url, por ejemplo para flechas -->
+<ng-container *ngIf="!url">
+  <ng-container [ngSwitch]="tipo">
+    <img *ngSwitchCase="'flechaLeft'" src="../../../assets/icons/leftarrow.svg" alt="leftarrow" width="32" height="32" />
+    <img *ngSwitchCase="'flechaRight'" src="../../../assets/icons/rightarrow.svg" alt="rightarrow" width="32" height="32" />
+    <img *ngSwitchDefault src="../../../assets/icons/otro.svg" alt="icono" width="32" height="32" />
+  </ng-container>
+</ng-container>

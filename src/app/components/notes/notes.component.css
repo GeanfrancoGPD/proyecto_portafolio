@@ -1,55 +1,114 @@
-.notas-container {
+.slider-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 1rem 0;
+}
+
+.notas-container.slider {
   display: flex;
-  flex-direction: row; /* Apila en horizontal */
-  flex-wrap: wrap;     /* Permite que pasen a la siguiente fila */
-  gap: 1rem;           /* Espacio entre notas */
-  justify-content: center; /* Alinea notas al inicio */
+  flex-direction: row;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 16px;
   padding: 1rem;
   box-sizing: border-box;
+  flex-wrap: nowrap;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.notas-container.slider::-webkit-scrollbar {
+  display: none;
 }
 
 .nota {
-  width: 30vw;         /* Ancho relativo al viewport */
-  min-width: 200px;    /* Ancho mínimo para que no se encojan demasiado */
+  flex: 0 0 auto;
+  width: 300px;
   height: 80vh;
   background-color: #f9f9f9;
   border: 1px solid #ddd;
   border-radius: 20px;
   padding: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  scroll-snap-align: start;
   box-sizing: border-box;
 }
 
-.nota h3{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.nota h3 {
   font-size: 6vh;
   font-family: "BondonItaly";
   margin: 8px;
-  --line-clamp: 2;  
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2; /* clave */
+  -webkit-box-orient: vertical;
 }
 
-.nota p{
+.nota p {
   margin: 12px;
   max-height: 30%;
   overflow-y: auto;
-  
 }
 
-img{
+img {
   height: 120px;
   width: 100%;
   border-radius: 12px;
-  object-fit: cover; /*La imagen se ajusta al contenedor*/
+  object-fit: cover;
 }
 
-.links{
+.links {
   display: flex;
   justify-content: flex-end;
 }
 
-.links img{
+.links img {
   margin: 20px;
   height: 40px;
+}
+
+/* Navegación */
+.nav-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  height: 30px;
+  width: 30px;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  font-size: 2rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.nav-button.left {
+  left: 0.5rem;
+}
+
+.nav-button.right {
+  right: 0.5rem;
+}
+
+.slider-section {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+h1{
+  margin-left: 12px;
+}
+
+.generico{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

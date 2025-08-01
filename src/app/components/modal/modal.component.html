@@ -7,12 +7,15 @@
         <div class="labels">
           <label for="title">Título:</label>
           <label for="descripción">Descripción:</label>
+          <label for="categoria">categoria</label>
           <label for="links">Links:</label>
           <label for="imagen">Seleccionar imagen:</label>
         </div>
         <div class="contenido">
           <input type="text" placeholder="Título" name="titulo" [(ngModel)]="nota.titulo" required />
           <textarea placeholder="Descripción" name="descripcion" [(ngModel)]="nota.descripcion"></textarea>
+          <input type="text" placeholder="categoria" [(ngModel)]="nota.categoria" name="categoria">
+
           <input type="text" placeholder="link github" [(ngModel)]="linksTemp.github" name="github">
           <input type="text" placeholder="link linkedin" [(ngModel)]="linksTemp.linkedin" name="linkedin">
           <input type="text" placeholder="link otros" [(ngModel)]="linksTemp.otro" name="otro">

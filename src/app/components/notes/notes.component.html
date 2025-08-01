@@ -1,18 +1,61 @@
-<div class="notas-container">
-    <div *ngFor="let nota of notas" class="nota">
-    <img *ngIf="nota.imagenUrl" [src]="nota.imagenUrl"/>
+<div class="slider-wrapper">
+    <h1>Proyectos Generales</h1>
+    <div class="generico">
+        <div class="nav-button left" (click)="scrollGeneral('left')">
+                <app-link-icon tipo="flechaLeft"></app-link-icon>
+            </div>
 
+        <div #generalSlider class="notas-container slider">
+            <div *ngFor="let nota of notas" class="nota">
+            <img *ngIf="nota.imagenUrl" [src]="nota.imagenUrl" alt="Imagen nota" />
+            <h3>{{ nota.titulo }}</h3>
+            <p>{{ nota.descripcion }}</p>
+            <p><small>{{ nota.fechaCreacion | date: 'short' }}</small></p>
 
-    <h3>{{ nota.titulo }}</h3>
-    <p>{{ nota.descripcion }}</p>
-    <p><small>{{ nota.fechaCreacion | date:'short' }}</small></p>
+            <div class="links" *ngIf="nota.links?.length">
+                <app-link-icon
+                *ngFor="let link of nota.links"
+                [tipo]="link.tipo"
+                [url]="link.url"
+                ></app-link-icon>
+            </div>
+            </div>
+        </div>
 
-    <div class="links" *ngIf="nota.links?.length">
-        <app-link-icon
-            *ngFor="let link of nota.links"
-            [tipo]="link.tipo"
-            [url]="link.url">
-        </app-link-icon>
+            <div class="nav-button right" (click)="scrollGeneral('right')">
+            <app-link-icon tipo="flechaRight"></app-link-icon>
+            </div>
+    </div>
+
+  <!-- Por categoria -->
+    <div *ngFor="let grupo of notasPorCategoria | keyvalue">
+        <h2>{{ grupo.key }}</h2>
+        <div class="generico">
+            <div class="nav-button left" (click)="scrollSlider(grupo.key, 'left')">
+                <app-link-icon tipo="flechaLeft"></app-link-icon>
+            </div>
+
+            <div class="notas-container slider" #sliderRef [attr.data-categoria]="grupo.key">
+                <div *ngFor="let nota of grupo.value" class="nota">
+                    <img *ngIf="nota.imagenUrl" [src]="nota.imagenUrl" alt="Imagen nota" />
+                    <h3>{{ nota.titulo }}</h3>
+                    <p>{{ nota.descripcion }}</p>
+                    <p><small>{{ nota.fechaCreacion | date: 'short' }}</small></p>
+
+                    <div class="links" *ngIf="nota.links?.length">
+                        <app-link-icon
+                        *ngFor="let link of nota.links"
+                        [tipo]="link.tipo"
+                        [url]="link.url"
+                        ></app-link-icon>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-button right" (click)="scrollSlider(grupo.key, 'right')">
+                <app-link-icon tipo="flechaRight"></app-link-icon>
+            </div>
+        </div>
     </div>
 
 </div>

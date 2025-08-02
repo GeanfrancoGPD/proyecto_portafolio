@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ref, push, set, get, child } from 'firebase/database';
+import { ref, push, set, get, remove } from 'firebase/database';
 import { getDatabase } from '@angular/fire/database';
 import { NotaPro } from '../../models/notas/notas.model';
 
@@ -9,11 +9,11 @@ import { NotaPro } from '../../models/notas/notas.model';
 export class ServiceNotasService {
   private db = getDatabase();  
 
-  crearNota(uid: string, nota: NotaPro) {
-    const notaRef = ref(this.db, `usuarios/${uid}/notasPro`);
-    const nuevaNotaRef = push(notaRef);
-    return set(nuevaNotaRef, nota);
-  }
+    crearNota(uid: string, nota: NotaPro) {
+      const notaRef = ref(this.db, `usuarios/${uid}/notasPro`);
+      const nuevaNotaRef = push(notaRef);
+      return set(nuevaNotaRef, nota);
+    }
 
   async obtenerNotas(uid: string): Promise<NotaPro[]> {
     const notaRef = ref(this.db, `usuarios/${uid}/notasPro`);
@@ -30,7 +30,12 @@ export class ServiceNotasService {
       }) as NotaPro[];
     } else {
       return [];
-    }
+    } 
+  }
+
+  eliminarNota(uid: string, notaId: string) {
+    const notaRef = ref(this.db, `usuarios/${uid}/notasPro/${notaId}`);
+    return remove(notaRef);
   }
 
 

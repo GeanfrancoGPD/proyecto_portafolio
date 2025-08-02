@@ -31,6 +31,8 @@ export class NotesComponent implements OnInit {
       const todasLasNotas = await this.notasService.obtenerNotas(this.uid);
 
       this.notas = todasLasNotas;
+      console.log(this.notas);
+      
 
       // Agrupar por categoría
       this.notasPorCategoria = todasLasNotas.reduce((acc, nota) => {

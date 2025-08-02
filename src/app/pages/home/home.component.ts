@@ -24,7 +24,7 @@ export class HomeComponent {
   mostrarModal = false;
   mostrarNotas = true;
   tipoModal: 'crear' | 'editar' | 'eliminar' = 'crear';
-  uid: string = 'dy2xi4booiRkL4oyFQQOY5fB72s1';
+  uid: string = '';
 
   categorias: string[] = [];
 
@@ -32,16 +32,16 @@ export class HomeComponent {
     this.categorias = categorias;
   }
 
-  // ngOnInit() {
-  //   const user = this.authService.getCurrentUser();
-  //   if( user === null){
-  //     this.router.navigate(['/']);
-  //   }else{
-  //    this.uid = user.uid   
-  //   }
-  //   console.log('Usuario actual:', user?.email);
-  //   console.log('Datos del usuario', user?.uid);
-  // }
+  ngOnInit() {
+    const user = this.authService.getCurrentUser();
+    if( user === null){
+      this.router.navigate(['/']);
+    }else{
+     this.uid = user.uid   
+    }
+    console.log('Usuario actual:', user?.email);
+    console.log('Datos del usuario', user?.uid);
+  }
 
 
   abrirModal(tipo: 'crear' | 'editar' | 'eliminar') {

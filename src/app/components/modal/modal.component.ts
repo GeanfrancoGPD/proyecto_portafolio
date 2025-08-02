@@ -31,6 +31,7 @@ export class ModalComponent {
     imagenUrl: '',
     links:[],
   };
+
   linksTemp = {
     github: '',
     linkedin: '',

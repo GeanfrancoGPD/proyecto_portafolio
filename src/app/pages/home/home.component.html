@@ -34,16 +34,27 @@
     
 
     <app-notes
+      *ngIf="mostrarNotas"
       [uid]="uid"
       (categoriasEncontradas)="recibirCategorias($event)"
     ></app-notes>
-
-    <p>Contenido principal aquí</p>
-    <p>Más contenido, textos, imágenes o secciones</p>
   </main>
 
   <footer class="footer">
-    <p>Pie de página — todos los derechos reservados</p>
+    <div class="contenidoFooter">
+      <div class="Contactos">
+        <h2>Contactos</h2>
+        <a> Geanfranco</a>
+
+      </div>
+      <div class="cuentas">
+        <h2>Siguenos</h2>
+        <div class="Links">
+          <app-link-icon  [tipo]="'GitHubLight'" [url]="'https://github.com/dashboard'"></app-link-icon>
+        <app-link-icon  [tipo]="'LinkedInLigth'" [url]="'www.linkedin.com/in/geanfranco-piccioni-8864a3340'"></app-link-icon>
+        </div>
+      </div>
+    </div>
   </footer>
 
   <app-modal

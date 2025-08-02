@@ -48,10 +48,12 @@
 
 /* Footer visible al final */
 .footer {
-  background-color: #222;
+  height: 30vh;
   color: white;
   padding: 1rem 2rem;
   text-align: center;
+  background-color: #222;
+
 }
 
 
@@ -119,3 +121,33 @@ button:hover{
   color: yellow;
 }
 
+.cuentas,
+.Contactos{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.cuentas h2,
+.Contactos h2{
+  margin-bottom: 4vh;
+  border-bottom: 2px solid rgb(0, 225, 255);
+}
+
+.Contactos a{
+  margin: 6px;
+}
+
+.Links{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.contenidoFooter{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 40px;
+}

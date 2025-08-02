@@ -16,7 +16,7 @@
   border-radius: 8px;
   width: 400px;
   max-width: 500px;
-  background: rgb(33, 0, 197);
+  background: rgba(0, 62, 197, 0.696);
 
 }
 
@@ -47,6 +47,7 @@
   box-sizing: border-box;
   height: 50px;             
   max-height: 80px; 
+  border-radius: 8px;
 }
 
 .botones{

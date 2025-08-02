@@ -11,7 +11,7 @@ import { LinkIconComponent } from '../../components/link-icon/link-icon.componen
 @Component({
   selector: 'app-home',
   imports: [ FormsModule, CommonModule, EditorTextComponent, 
-    NotesComponent, ModalComponent],
+    NotesComponent, ModalComponent, LinkIconComponent],
   standalone: true,
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
@@ -22,6 +22,7 @@ export class HomeComponent {
 
   constructor(private authService: AuthService, private router: Router) {}
   mostrarModal = false;
+  mostrarNotas = true;
   tipoModal: 'crear' | 'editar' | 'eliminar' = 'crear';
   uid: string = 'dy2xi4booiRkL4oyFQQOY5fB72s1';
 
@@ -46,9 +47,12 @@ export class HomeComponent {
   abrirModal(tipo: 'crear' | 'editar' | 'eliminar') {
     this.tipoModal = tipo;
     this.mostrarModal = true;
+    this.mostrarNotas = false;
+
   }
 
   cerrarModal() {
+    this.mostrarNotas = true;
     this.mostrarModal = false;
   }
   

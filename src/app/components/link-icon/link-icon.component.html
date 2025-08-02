@@ -2,7 +2,9 @@
 <a *ngIf="url" [href]="url" target="_blank" rel="noopener noreferrer" class="icon-link">
   <ng-container [ngSwitch]="tipo">
     <img *ngSwitchCase="'GitHub'" src="../../../assets/icons/github.svg" alt="GitHub" width="16" height="16" />
+    <img *ngSwitchCase="'GitHubLight'" src="../../../assets/icons/githubLight.svg" alt="GitHubLight" width="16" height="16" />
     <img *ngSwitchCase="'LinkedIn'" src="../../../assets/icons/linkedin.svg" alt="LinkedIn" width="16" height="16" />
+    <img *ngSwitchCase="'LinkedInLigth'" src="../../../assets/icons/linkedinLight.svg" alt="LinkedInLigth" width="16" height="16" />
     <img *ngSwitchDefault src="../../../assets/icons/otro.svg" alt="Otro" width="16" height="16" />
   </ng-container>
 </a>

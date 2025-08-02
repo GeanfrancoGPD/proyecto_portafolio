@@ -28,8 +28,8 @@
     </div>
 
   <!-- Por categoria -->
-    <div *ngFor="let grupo of notasPorCategoria | keyvalue">
-        <h2>{{ grupo.key }}</h2>
+    <div *ngFor="let grupo of notasPorCategoria | keyvalue" id="grupo.key">
+        <h1>{{ grupo.key }}</h1>
         <div class="generico">
             <div class="nav-button left" (click)="scrollSlider(grupo.key, 'left')">
                 <app-link-icon tipo="flechaLeft"></app-link-icon>

@@ -1,4 +1,5 @@
-import { Component, Input, OnInit, ViewChildren, QueryList, ElementRef, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChildren, QueryList, ElementRef, ViewChild,
+  Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ServiceNotasService } from '../../services/service-notas/service-notas.service';
 import { NotaPro } from '../../models/notas/notas.model';
@@ -16,6 +17,7 @@ export class NotesComponent implements OnInit {
   @Input() categoria?: string;
   @ViewChildren('sliderRef') sliders!: QueryList<ElementRef>;
   @ViewChild('generalSlider') generalSlider!: ElementRef;
+  @Output() categoriasEncontradas = new EventEmitter<string[]>();
 
   notas: NotaPro[] = [];
   notasPorCategoria: { [categoria: string]: NotaPro[] } = {};
@@ -38,6 +40,10 @@ export class NotesComponent implements OnInit {
         return acc;
       }, {} as { [categoria: string]: NotaPro[] });
 
+       // Emitir categorías únicas
+      const categorias = Object.keys(this.notasPorCategoria);
+      this.categoriasEncontradas.emit(categorias);
+
     } catch (error) {
       console.error('Error al cargar notas:', error);
     }
@@ -59,7 +65,7 @@ export class NotesComponent implements OnInit {
     }
   }
 
-    scrollGeneral(direction: 'left' | 'right') {
+  scrollGeneral(direction: 'left' | 'right') {
     if (!this.generalSlider) return;
 
     const container = this.generalSlider.nativeElement;
@@ -69,6 +75,14 @@ export class NotesComponent implements OnInit {
       container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
     } else {
       container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  }
+
+  scrollToCategoria(categoria: string) {
+    // Encuentra el slider de la categoría:
+    const slider = this.sliders.find(sl => sl.nativeElement.getAttribute('data-categoria') === categoria);
+    if (slider) {
+      slider.nativeElement.scrollIntoView({ behavior: 'smooth' });
     }
   }
 

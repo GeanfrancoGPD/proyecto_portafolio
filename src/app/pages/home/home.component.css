@@ -75,3 +75,47 @@ button:hover{
   background-color: blue;
 }
 
+.barra_principal{
+  
+  width: 90%;
+
+  height: 10vh;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin: 8px;
+  background-color: #ffffff;
+}
+
+.menu_nav{
+  height: 10vh;
+  width: 30vw;
+  border-radius: 12px;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  color: white;
+  background-color: #060a45;
+}
+
+.navar.link {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.navar.link li a {
+  color: white;
+  text-decoration: none;
+  margin: 8px;
+}
+
+.navar.link li a:hover{
+  color: yellow;
+}
+

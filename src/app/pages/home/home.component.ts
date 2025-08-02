@@ -18,11 +18,18 @@ import { LinkIconComponent } from '../../components/link-icon/link-icon.componen
 })
 export class HomeComponent {
   @ViewChild('botonGuardar') botonG!: ElementRef<HTMLButtonElement>;
+  @ViewChild(NotesComponent) notesComponent!: NotesComponent;
+
   constructor(private authService: AuthService, private router: Router) {}
   mostrarModal = false;
   tipoModal: 'crear' | 'editar' | 'eliminar' = 'crear';
   uid: string = 'dy2xi4booiRkL4oyFQQOY5fB72s1';
 
+  categorias: string[] = [];
+
+  recibirCategorias(categorias: string[]) {
+    this.categorias = categorias;
+  }
 
   // ngOnInit() {
   //   const user = this.authService.getCurrentUser();
@@ -46,10 +53,8 @@ export class HomeComponent {
   }
   
 
-
-  
-
-  
-
+  irACategoria(cat: string) {
+    this.notesComponent.scrollToCategoria(cat);
+  }  
 
 }

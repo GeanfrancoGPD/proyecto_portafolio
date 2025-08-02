@@ -9,21 +9,33 @@
 
   <main class="body">
 
-    <div class="barra principal">
+    <div class="barra_principal">
+      <div class="menu_nav">
+        <nav>
+          <ul class="navar link">
+            <li *ngFor="let cat of categorias">
+              <a href="javascript:void(0)" (click)="irACategoria(cat)">{{ cat }}</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
 
-    </div>
-    <div class="menu">
-      
-    </div>
-    <div class="botones">
-      <button (click)="abrirModal('crear')">+</button>
-      <button (click)="abrirModal('editar')">*</button>
-      <button (click)="abrirModal('eliminar')">-</button>
+    <div>
+      <div class="menu">
+        
+      </div>
+      <div class="botones">
+        <button (click)="abrirModal('crear')">+</button>
+        <button (click)="abrirModal('editar')">*</button>
+        <button (click)="abrirModal('eliminar')">-</button>
+      </div>
     </div>
     
 
     <app-notes
       [uid]="uid"
+      (categoriasEncontradas)="recibirCategorias($event)"
     ></app-notes>
 
     <p>Contenido principal aquí</p>
